@@ -1,0 +1,122 @@
+<app-nav></app-nav>
+<div class="container-fluid">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-sm">
+                <h4>Importes totales de sus órdenes de compra</h4>
+            </div>
+            <div class="col-sm  align-self-center text-right">
+                <a class="btn btn-primary" (click)="openDialog()">
+                    crear un nuevo pedido
+                    <i class="bi bi-file-earmark-diff"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="row" style="margin-bottom: 70px; margin-top: 28px;">
+                    <div class="col-sm">
+                        <img src="../../../assets/Imagenes/Money jar_Monochromatic.svg" alt="" srcset="" style="width:300px">
+                    </div>
+                    <div class="col-sm align-self-center text-center">
+                        <h4>1.561</h4>
+                        <p>Total</p>
+                    </div>
+                    <div class="col-sm">
+                        <img src="../../../assets/Imagenes/Money transfer _Isometric.svg" alt="" srcset="" style="width:300px">
+                    </div>
+                    <div class="col-sm align-self-center text-center">
+                        <h4>837</h4>
+                        <p>Órdenes de compra</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <h4 class="text-center">2.089547,98</h4>
+                        <p class="text-center">CPL</p>
+                    </div>
+                    <div class="col-sm">
+                        <h4 class="text-center">2851,07</h4>
+                        <p class="text-center">USD</p>
+                    </div>
+                    <div class="col-sm">
+                        <h4 class="text-center">2,412.99</h4>
+                        <p class="text-center">EUR</p>
+                    </div>
+                    <div class="col-sm">
+                        <h4 class="text-center">312691,01</h4>
+                        <p class="text-center">YEN</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm align-self-center text-center">
+                <img src="../../../assets/Imagenes/Order Confirmed_Two Color.svg" alt="" srcset="">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 90px;">
+            <div class="col-sm">
+                <h4>Lista de pedidos</h4>
+            </div> 
+        </div>
+        <div class="row" style="margin-top: 40px; margin-bottom:60px">
+            <div class="col-sm">
+                <div class="radio-container">
+                    <div class="radio-options">
+                      <input class="radio-input" id="showTodos" type="radio" name="show" value="Todos" checked="checked"/>
+                      <label class="radio-label" for="showTodos">Todos</label>
+                      <input class="radio-input" id="showedición" type="radio" name="show" value="edición"/>
+                      <label class="radio-label" for="showedición">En edición</label>
+                      <input class="radio-input" id="showEnviado_por_mí" type="radio" name="show" value="Enviado_por_mí"/>
+                      <label class="radio-label" for="showEnviado_por_mí">Enviado por mí</label>
+                      <input class="radio-input" id="showborradores" type="radio" name="show" value="borradores"/>
+                      <label class="radio-label" for="showborradores">Borradores</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm align-self-center text-right">
+                <a class="btn btn-primary" >
+                    Exportar a excel
+                    <i class="bi bi-file-earmark-excel"></i>
+                </a>
+            </div>
+        </div>
+        <!-- <table id="table_id"  datatable  cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del pedido</th>
+                    <th>Última acción</th>
+                    <th>Equipo</th>
+                    <th>Categoría</th> 
+                    <th>Total</th>
+                    <th>Asignado a</th>
+                    <th>Estado </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre del pedido</td>
+                    <td>Última acción</td>
+                    <td>Equipo</td>
+                    <td>Categoría</td> 
+                    <td>Total</td>
+                    <td>Asignado a</td>
+                    <td>Estado </td>
+                </tr>
+            </tbody>
+        </table> -->
+        <!-- #docregion align-start -->
+        <mat-tab-group mat-align-tabs="start">
+            <!-- #enddocregion align-start -->
+            <div *ngFor="let idOrden of IdOrden">
+                <mat-tab label="Id: {{idOrden.id}}">
+                    <app-detail-purchase  [childMessage] = idOrden.id></app-detail-purchase>
+                </mat-tab>
+            </div>
+            
+        </mat-tab-group>
+            
+        <p></p>
+    </div>
+</div>

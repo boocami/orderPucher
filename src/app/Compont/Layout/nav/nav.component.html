@@ -1,0 +1,28 @@
+<nav stlye="margin-bottom:60px"> 
+    <ul class="nav justify-content-center">
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item" *ngIf="!isAdmin">
+        <a class="nav-link">Orden compra<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item" *ngIf="!isAdmin">
+        <a class="nav-link">Mi Perfil <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link">Ver ordenes <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link">Usuarios<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link">Estadisticas<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link" routerLink="Sobre">Sobre el proyecto<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="toLogout($event)">Logout<span class="sr-only"></span></a>
+      </li>
+      </ul>
+</nav>

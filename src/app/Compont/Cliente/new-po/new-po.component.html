@@ -1,0 +1,64 @@
+<h1 mat-dialog-title>Generar orden de compra</h1>
+<div mat-dialog-content>
+  <strong>Detalles de la orden de compra</strong>
+  <div class="row">
+    <div class="col-lg-6">
+      <strong>Orden #: </strong>
+      <div class="col-lg-6">
+      </div>
+      <strong>Fecha: </strong>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <form [formGroup]="ordenCompraForm" (ngSubmit)="insertTablaTemporal()">
+      <div class="col-sm">
+        <mat-form-field class="example-full-width">
+          <mat-label>Productos</mat-label>
+          <input type="text" placeholder="Elegir uno" aria-label="Productos" matInput [formControl]="myControl"
+            [matAutocomplete]="auto"  formControlName="producto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col-sm">
+        <mat-form-field class="example-full-width">
+          <mat-label>Cantidad</mat-label>
+          <input matInput placeholder="Ingrese Cantidad" value=""  formControlName="cantidad" type="number">
+        </mat-form-field>
+      </div>
+      <div class="col-sm">
+        <mat-form-field class="example-full-width">
+          <mat-label>Costo unitario</mat-label>
+          <input matInput placeholder="Costo unitario" formControlName="precio" value="{{precio| currency: 'USD' | lowercase }}">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <button mat-raised-button color="primary">Agregar Items</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<li *ngFor="let detalle of DetalleOrdenCompra"> 
+  Nombre del producto: {{ detalle.nombreP }}
+  Cantidad: {{detalle.cantidad }}
+  Precio: {{detalle.precioProducto| currency: 'USD' | lowercase }}
+</li>
+<br>
+<p>Total sin IVA: {{valorSinIva | currency: 'USD' | lowercase }}</p>
+<p>Total con IVA: {{valorConIva | currency: 'USD' | lowercase }}</p>
+<br>
+<div class="row" style="text-align: end;">
+  <div class="col-sm">
+    <button mat-raised-button color="primary" (click)="onSave()">Generar órden de compra</button>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+</div>

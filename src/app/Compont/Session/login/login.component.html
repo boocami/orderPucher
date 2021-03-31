@@ -1,0 +1,38 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <app-spinner [message]="animation"></app-spinner>
+            <div class="col-md-6 mx-auto mt-5">
+                <h1>LOGIN</h1>
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="email" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="password" formControlName="pass">
+                    </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger" >
+                        <div *ngIf="email.errors.required">
+                            Requerido
+                        </div>
+                        <div *ngIf="email.errors.email">
+                            Formato Erroneo
+                        </div>
+                    </div>
+                    <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="alert alert-danger" >
+                        <div *ngIf="pass.errors.required">
+                            Requerido
+                        </div>
+                        <div *ngIf="pass.errors.passwordValidation">
+                            {{pass.errors.passwordValidation.message}}
+                        </div>
+                    </div>
+                    <button [disabled]="loginForm.invalid" class="btn btn-primary btn-lg">Login</button>
+                    <div class="row mb-4 px-3"> <small class="font-weight-bold">¿No tienes cuenta? <a class="text-danger " [routerLink]="'../register'" >Register</a></small> </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
